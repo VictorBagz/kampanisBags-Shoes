@@ -339,9 +339,9 @@ html, body {
     }
     
     .services-grid {
-        grid-template-columns: 1fr;
-        max-width: 300px;
-        gap: 15px;
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 350px;
+        gap: 12px;
     }
     
     .service-item {

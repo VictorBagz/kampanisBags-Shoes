@@ -2043,11 +2043,11 @@ html {
         font-size: 7px;
     }
     
-    /* Services grid - single column for very small screens */
+    /* Services grid - 2 columns for small screens */
     .services-grid {
-        grid-template-columns: 1fr !important;
-        max-width: 300px;
-        gap: var(--space-md);
+        grid-template-columns: repeat(2, 1fr) !important;
+        max-width: 350px;
+        gap: 12px;
     }
     
     .services-title {
