@@ -21,10 +21,10 @@
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Kampanis Shoes and Bags Clinic",
-      "url": "https://mrquickie.com",
-      "logo": "https://mrquickie.com/photos/k3.jpeg",
-      "image": "https://mrquickie.com/photos/k3.jpeg",
-      "telephone": ["+256704830016", "+256775833585"],
+      "url": "https://kampanisbc.com",
+      "logo": "photos/k3.jpeg",
+      "image": "photos/k3.jpeg",
+      "telephone": ["+256704830016", "+256789183784"],
       "email": "info@kampanisbc.com",
       "address": {
         "@type": "PostalAddress",
@@ -248,107 +248,14 @@
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/main-navigation.js"></script>
     <script>
         AOS.init({
             duration: 800,
             once: true,
             offset: 50,
         });
-
-        // Slideshow functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            function initializeSlideshow(containerClass, prevButtonId, nextButtonId, interval = 5000) {
-                const slideshow = document.querySelector(containerClass);
-                const slides = slideshow.querySelector('.slideshow__slides');
-                const slideElements = slideshow.querySelectorAll('.slideshow__slide');
-                const dotsContainer = slideshow.querySelector('.slideshow__dots');
-                const prevButton = document.getElementById(prevButtonId);
-                const nextButton = document.getElementById(nextButtonId);
-                
-                let currentSlide = 0;
-                const totalSlides = slideElements.length;
-
-                // Create dot indicators
-                slideElements.forEach((_, index) => {
-                    const dot = document.createElement('button');
-                    dot.classList.add('slideshow__dot');
-                    dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
-                    dot.addEventListener('click', () => goToSlide(index));
-                    dotsContainer.appendChild(dot);
-                });
-
-                const dots = dotsContainer.querySelectorAll('.slideshow__dot');
-                updateDots();
-
-                // Navigation functions
-                function updateDots() {
-                    dots.forEach((dot, index) => {
-                        dot.classList.toggle('slideshow__dot--active', index === currentSlide);
-                    });
-                }
-
-                function goToSlide(index) {
-                    currentSlide = index;
-                    slides.style.transform = `translateX(-${currentSlide * 100}%)`;
-                    updateDots();
-                }
-
-                function nextSlide() {
-                    currentSlide = (currentSlide + 1) % totalSlides;
-                    goToSlide(currentSlide);
-                }
-
-                function prevSlide() {
-                    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                    goToSlide(currentSlide);
-                }
-
-                // Event listeners
-                prevButton.addEventListener('click', prevSlide);
-                nextButton.addEventListener('click', nextSlide);
-
-                // Auto-advance slides
-                let slideInterval = setInterval(nextSlide, interval);
-
-                // Pause auto-advance on hover
-                slideshow.addEventListener('mouseenter', () => {
-                    clearInterval(slideInterval);
-                });
-
-                slideshow.addEventListener('mouseleave', () => {
-                    slideInterval = setInterval(nextSlide, interval);
-                });
-
-                // Return navigation functions for keyboard controls
-                return { nextSlide, prevSlide };
-            }
-
-            // Initialize both slideshows
-            const topPicksNav = initializeSlideshow('.top-picks .slideshow', 'prevSlide', 'nextSlide');
-            const worksNav = initializeSlideshow('.works-slideshow', 'prevWorkSlide', 'nextWorkSlide', 6000);
-
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                // Only control the slideshow that's currently in view
-                const topPicksEl = document.querySelector('.top-picks');
-                const worksEl = document.querySelector('.works');
-                const windowHeight = window.innerHeight;
-                const scrollPosition = window.scrollY;
-
-                // Check if top picks section is more in view
-                const topPicksRect = topPicksEl.getBoundingClientRect();
-                const worksRect = worksEl.getBoundingClientRect();
-
-                if (Math.abs(topPicksRect.top) < Math.abs(worksRect.top)) {
-                    if (e.key === 'ArrowLeft') topPicksNav.prevSlide();
-                    if (e.key === 'ArrowRight') topPicksNav.nextSlide();
-                } else {
-                    if (e.key === 'ArrowLeft') worksNav.prevSlide();
-                    if (e.key === 'ArrowRight') worksNav.nextSlide();
-                }
-            });
-        });
     </script>
+    <script src="js/main-navigation.js"></script>
+    <script src="js/slideshow.js"></script>
 </body>
 </html>
