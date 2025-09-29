@@ -66,9 +66,7 @@
         <main id="main-content">
             <section id="home" class="hero">
                 <div class="hero__image-container">
-                    <div class="hero__image-slide active" style="background-image: url('photos/shoes.jpg')"></div>
-                    <div class="hero__image-slide" style="background-image: url('photos/IMG_COM_202509181323533872.webp')"></div>
-                    <div class="hero__image-slide" style="background-image: url('photos/IMG_COM_202509181323520500.webp')"></div>
+                    <img src="photos/shoes.jpg" alt="Expert shoe and bag repair services">
                 </div>
                 <div class="hero__content">
                     <h1 class="hero__title" data-aos="fade-up">Quality work takes time.</h1>
@@ -256,21 +254,6 @@
             duration: 800,
             once: true,
             offset: 50,
-        });
-
-        // Hero background image slider
-        document.addEventListener('DOMContentLoaded', function() {
-            const slides = document.querySelectorAll('.hero__image-slide');
-            let currentSlide = 0;
-
-            function nextSlide() {
-                slides[currentSlide].classList.remove('active');
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.add('active');
-            }
-
-            // Change slide every 1.8 seconds
-            setInterval(nextSlide, 1800);
         });
 
         // Slideshow functionality
