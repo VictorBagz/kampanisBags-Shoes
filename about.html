@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Kampani's Shoes & Bags Clinic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* Base Styling & Red/White Theme */
+        :root {
+            --primary-red: #B00020;
+            --secondary-red: #FF3333;
+            --dark-text: #1a1a1a;
+            --light-text: #f0f0f0;
+            --white: #ffffff;
+            --light-gray: #f9f9f9;
+            --overlay-color: rgba(0, 0, 0, 0.75); /* Darker overlay for text contrast */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: all 0.3s ease-in-out; 
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-text);
+            line-height: 1.6;
+            background-color: var(--light-gray);
+            /* Important: Set text color to white by default for body content */
+            color: var(--light-text); 
+        }
+        
+        /* --- Background Image and Overlay --- */
+        .background-wrap {
+            /* Replace with your image URL */
+            background-image: url('photos/k3.jpeg'); 
+            background-attachment: fixed; /* Keeps the background static as content scrolls */
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Semi-dark overlay color */
+            background-color: var(--overlay-color); 
+            z-index: 1; /* Keep it below content, but above the image */
+        }
+        
+        /* Ensure the main content floats above the overlay */
+        .content-container {
+            position: relative;
+            z-index: 2; 
+        }
+
+
+        /* --- Navigation Bar (White) --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            height: 45px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .hamburger {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px 0;
+            background-color: var(--dark-text);
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 700;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: var(--white);
+                padding: 80px 2rem 2rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-toggle.active .hamburger:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .nav-toggle.active .hamburger:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-toggle.active .hamburger:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+        }
+
+        /* Nav Hover Effect (Cool underline) */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            display: block;
+            margin-top: 5px;
+            right: 0;
+            background: var(--secondary-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+            left: 0;
+            background: var(--primary-red);
+        }
+
+        /* --- Hero Section (Red Background - Changed to Black for better contrast on background image) --- */
+        /* To create separation, the hero section will use the secondary red */
+        .hero {
+            background: linear-gradient(rgba(183, 28, 28, 0.85), rgba(183, 28, 28, 0.85)), url('photos/k3.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: var(--light-text);
+            padding: 150px 5% 100px;
+            text-align: center;
+            margin-top: 60px; /* Space for fixed navbar */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            opacity: 0; 
+            animation: fadeInDown 1s forwards 0.5s;
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translate3d(0, -50px, 0); }
+            to { opacity: 1; transform: translate3d(0, 0, 0); }
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            opacity: 0.8;
+            opacity: 0;
+            animation: fadeInDown 1s forwards 0.8s;
+            margin-bottom: 2rem;
+        }
+
+        .hero-button {
+            display: inline-block;
+            padding: 0.75rem 2.5rem;
+            background-color: var(--white);
+            color: var(--primary-red);
+            border: 2px solid var(--white);
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.8s ease forwards 1.1s;
+        }
+
+        .hero-button:hover {
+            background-color: transparent;
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Main Content Structure --- */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            color: var(--secondary-red); /* Headers stand out in bright red */
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-header::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-red);
+            margin: 10px auto 0;
+        }
+
+        .content-block {
+            padding: 40px;
+            margin-bottom: 60px;
+            /* Use a semi-transparent black background so the main background image still shows */
+            background-color: rgba(0, 0, 0, 0.6); 
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            color: var(--light-text); /* Ensure text is light */
+        }
+
+        .content-block h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--secondary-red); /* Title in brighter red */
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        /* --- Legacy & Founder Block --- */
+        .legacy-founders {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .legacy-story {
+            flex: 2;
+        }
+
+        .founders-info {
+            flex: 1;
+            padding: 30px;
+            background-color: var(--primary-red);
+            color: var(--white);
+            border-radius: 8px;
+        }
+
+        .founders-info p {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .founders-info p:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        /* --- Services/Why Choose Sections (Grid) --- */
+        .services-grid, .commitment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            /* Cards use a light transparent background for subtle distinction */
+            background-color: rgba(255, 255, 255, 0.1); 
+            padding: 25px;
+            border-radius: 6px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+            border-top: 4px solid var(--secondary-red);
+            color: var(--light-text);
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* Brighter on hover */
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            border-top: 4px solid var(--primary-red);
+            transform: translateY(-5px); 
+        }
+
+        .service-card h3 {
+            color: var(--secondary-red); /* Brighter red for card titles */
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .service-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .service-card li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 5px;
+        }
+
+        .service-card li::before {
+            content: '•';
+            color: var(--secondary-red);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--dark-text);
+            color: var(--light-text);
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.9em;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .footer span {
+            color: var(--secondary-red);
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="background-wrap">
+        <div class="overlay"></div>
+        
+        <div class="content-container">
+
+            <nav class="navbar">
+                <div class="nav-logo">
+                    <a href="index.html"><img src="photos/k4.jpeg" alt="Kampani's Clinic Logo"></a>
+                </div>
+                <button class="nav-toggle" aria-label="Toggle navigation menu">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html" style="color: var(--primary-red);">About</a>
+                    <a href="index.html#services">Services</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </nav>
+
+            <header class="hero">
+                <h1>Our Legacy of Craftsmanship</h1>
+                <p>Decades of Dedication to Quality Shoe & Bag Restoration</p>
+            </header>
+
+            <main class="container">
+
+                <div class="content-block" data-aos="fade-up">
+                    <h2 class="section-header">The Journey of Excellence</h2>
+
+                    <div class="legacy-founders">
+                        <div class="legacy-story">
+                            <p>The Kampani’s Shoes & Bags Clinic journey is rooted deeply in a family tradition of uncompromising quality and craftsmanship. It all began in 1997 with <strong>Mr. Wilington Nabwana</strong>, the founder of the highly respected <strong>Shoe Care Centre</strong>.</p>
+                            <p>Mr. Nabwana's business was a beacon of expertise, built on a passionate commitment to restoring leather goods with precision and care. His influence laid the groundwork for everything that followed.</p>
+                            <p>In <strong>2006</strong>, armed with a set of his father’s well-used but trusted shoe repair machines, <strong>Arthur and Stella Kampani</strong> established the clinic. They built their foundation on the same principles of quality service but with an ambition to <strong>innovate</strong>, expanding their expertise to include premium brands and a more comprehensive range of services. This is not just a business; it's a continuing family legacy.</p>
+                        </div>
+                        <div class="founders-info" data-aos="fade-left" data-aos-delay="300">
+                            <h3>At a Glance</h3>
+                            <p><strong>Founded:</strong> 2006</p>
+                            <p><strong>Founders:</strong> Arthur & Stella Kampani</p>
+                            <p><strong>Original Influence:</strong> Mr. Wilington Nabwana (Shoe Care Centre)</p>
+                            <p><strong>Current Location:</strong> Forest Mall, Lugogo, Kampala</p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr style="border-color: rgba(255, 255, 255, 0.1);">
+
+                <div class="content-block" data-aos="fade-up" data-aos-delay="100">
+                    <h2 class="section-header">Precision Services</h2>
+                    <div class="services-grid">
+                        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                            <h3>Shoe Repairs & Care</h3>
+                            <p>We extend the life of your footwear with precision and the finest materials.</p>
+                            <ul>
+                                <li>Sole replacements & heel repairs</li>
+                                <li>Leather restoration</li>
+                                <li>Professional shoe cleaning</li>
+                            </ul>
+                        </div>
+                        <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                            <h3>Bag Repairs & Restoration</h3>
+                            <p>From luxury handbags to everyday carry, we bring your bags back to life.</p>
+                            <ul>
+                                <li>Zipper and lining fixes</li>
+                                <li>Leather restoration and dyeing</li>
+                                <li>Strap and hardware repairs</li>
+                            </ul>
+                        </div>
+                        <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                            <h3>Alterations & Customizations</h3>
+                            <p>Tailoring products for a better fit, style, and personalized comfort.</p>
+                            <ul>
+                                <li>Custom tailoring of shoes and bags</li>
+                                <li>Watch Repairs (Professional timepieces service)</li>
+                            </ul>
+                        </div>
+                        <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                            <h3>Retail Products</h3>
+                            <p>We only trust and sell the best brands in the footwear and accessories world.</p>
+                            <ul>
+                                <li>Loake Shoemakers</li>
+                                <li>Cole Haan, Pantherella, and Visconti</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <hr style="border-color: rgba(255, 255, 255, 0.1);">
+
+                <div class="content-block" style="background-color: rgba(183, 28, 28, 0.85); color: var(--light-text);" data-aos="flip-up">
+                    <h2 class="section-header" style="color: var(--white);">Why Choose Kampani's?</h2>
+                    <div class="commitment-grid">
+                        <div class="service-card" style="background-color: rgba(255, 255, 255, 0.1); color: var(--white); border-top: 4px solid var(--white);" data-aos="fade-up" data-aos-delay="100">
+                            <h3 style="color: #FFC107;">Family Legacy</h3>
+                            <p>Decades of experience ensure a depth of skill and a standard of quality that only a multi-generational business can offer.</p>
+                        </div>
+                        <div class="service-card" style="background-color: rgba(255, 255, 255, 0.1); color: var(--white); border-top: 4px solid var(--white);" data-aos="fade-up" data-aos-delay="200">
+                            <h3 style="color: #FFC107;">Professional Craftsmanship</h3>
+                            <p>Our expert team combines traditional techniques with modern repair methods, ensuring every item is handled by a true professional.</p>
+                        </div>
+                        <div class="service-card" style="background-color: rgba(255, 255, 255, 0.1); color: var(--white); border-top: 4px solid var(--white);" data-aos="fade-up" data-aos-delay="300">
+                            <h3 style="color: #FFC107;">Innovation & Trust</h3>
+                            <p>We are a pillar of the community, trusted for our dedication to expanding the shoe and bag care industry through innovation and skill.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+
+            <footer class="footer" data-aos="fade-up">
+                <p>&copy; 2025 Kampani’s Shoes & Bags Clinic. | Continuing a legacy of <span>Quality Craftsmanship</span>.</p>
+            </footer>
+
+        </div>
+    </div>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+          duration: 1000,
+          once: true,
+          easing: 'ease-in-out'
+      });
+
+      // Mobile Menu Toggle
+      document.querySelector('.nav-toggle').addEventListener('click', function() {
+          this.classList.toggle('active');
+          document.querySelector('.nav-links').classList.toggle('active');
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(e) {
+          if (!e.target.closest('.navbar')) {
+              document.querySelector('.nav-toggle').classList.remove('active');
+              document.querySelector('.nav-links').classList.remove('active');
+          }
+      });
+    </script>
+</body>
+</html>
+```
