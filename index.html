@@ -204,6 +204,15 @@
                 </div>
             </section>
             
+            <section class="section location">
+                <div class="container location__container" data-aos="fade-up">
+                    <h2 class="section__title">Find Us Here</h2>
+                    <p class="section__subtitle">Visit our location for professional shoe and bag services</p>
+                    <div class="location__map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.989179870878!2d32.60303377403756!3d0.3277909640103042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbb011a98725f%3A0x4ada3d007939ea84!2sKampani's%20Shoes%20%26%20Bags%20Clinic!5e1!3m2!1sen!2sug!4v1759422378695!5m2!1sen!2sug" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </section>
             </main>
 
         <footer id="contact" class="footer">
@@ -213,7 +222,18 @@
                     <ul class="footer__menu">
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="#works">Our Works</a></li>
-                        <li><a href="#">Branch List</a></li>
+                        <li class="footer__accordion">
+                            <button class="footer__accordion-btn" aria-expanded="false">
+                                Branch List
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <ul class="footer__accordion-content">
+                                <li><a href="#">Forest Mall Branch - Main Office</a></li>
+                                <li><a href="#">PickUp Point Branch</a></li>
+                                <li><a href="#">GF06 Branch</a></li>
+                                <li><a href="#">Quality Mall Luboowa Branch</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
                 <div class="footer__column">
@@ -260,5 +280,6 @@
     </script>
     <script src="js/main-navigation.js"></script>
     <script src="js/slideshow.js"></script>
+    <script src="js/accordion.js"></script>
 </body>
 </html>
